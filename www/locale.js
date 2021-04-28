@@ -1,10 +1,6 @@
 var channel = require('cordova/channel');
 var exec = require('cordova/exec');
 
-channel.createSticky('onCordovaInfoReady');
-// Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
-
 /**
  * This represents the device Locale, and provides properties for inspecting the region, language, preferredLanguages.
  * @constructor
@@ -16,34 +12,24 @@ function Locale() {
     this.language = null;
     this.preferredLanguages = [];
 
-    function successCallback(data) {
-        me.region = data.region;
-        me.language = data.language;
-        me.preferredLanguages = data.preferredLanguages;
-    }
-
-    function errorCallback(e) {
-        console.error('[ERROR] Error initializing cordova-plugin-locale: ' + e);
+    function subscribe(){
+        me.execute(
+            function (data) {
+                me.region = data.region;
+                me.language = data.language;
+                me.preferredLanguages = data.preferredLanguages;
+            },
+            function (e) {
+                console.error('[ERROR] Error initializing cordova-plugin-locale: ' + e);
+            }
+        );
     }
 
     //Retrieve the locale info when cordova is ready
-    channel.onCordovaReady.subscribe(function () {
-        me.execute(
-            function (data) {
-                successCallback(data);
-                channel.onCordovaInfoReady.fire();
-            },
-            errorCallback
-        );
-    });
+    channel.onCordovaReady.subscribe(subscribe);
 
     //Retrieve and update locale info when app is moved to foreground
-    channel.onResume.subscribe(function () {
-        me.execute(
-            successCallback,
-            errorCallback
-        );
-    });
+    channel.onResume.subscribe(subscribe);
 }
 
 /**

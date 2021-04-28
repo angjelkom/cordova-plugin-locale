@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-locale",
   "displayName": "Locale Cordova Plugin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Cordova Plugin used for retrieving Locale info",
   "cordova": {
     "id": "cordova-plugin-locale",
