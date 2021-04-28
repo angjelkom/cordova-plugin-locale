@@ -1,0 +1,40 @@
+{
+  "name": "cordova-plugin-locale",
+  "displayName": "Locale Cordova Plugin",
+  "version": "1.0.0",
+  "description": "Cordova Plugin used for retrieving Locale info",
+  "cordova": {
+    "id": "cordova-plugin-locale",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "locale",
+    "region",
+    "regionCode",
+    "language",
+    "languageCode",
+    "languages",
+    "preferredLanguages",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/echonox/cordova-plugin-locale.git"
+  },
+  "bugs": {
+    "url": "https://github.com/echonox/cordova-plugin-locale/issues"
+  },
+  "author": "Angjelko Miloshevski",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/echonox/cordova-plugin-locale#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

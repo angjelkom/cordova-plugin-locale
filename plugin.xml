@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-locale" version="1.0.0">
+    <name>Locale Cordova Plugin</name>
+    <description>Retrieve Locale info</description>
+    <repo>https://github.com/echonox/cordova-plugin-locale.git</repo>
+    <license>Apache 2.0</license>
+    <author>Angjelko Miloshevski</author>
+    <keywords>cordova,locale,region,regionCode,language,languageCode,languages,preferredLanguages</keywords>
+    <js-module src="www/locale.js" name="Locale">
+        <clobbers target="Locale" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Locale">
+                <param name="ios-package" value="CDVLocale"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/CDVLocale.swift" />
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    </platform>
+
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Locale">
+                <param name="android-package" value="io.jackdev.CDVLocale"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/CDVLocale.java" target-dir="src/io/jackdev" />
+    </platform>
+</plugin>
